@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {
+  const SearchPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text('Search Page'),
+        title: const Text('Search Page'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Search Page Demo Text'),
+            const Text('Search Page Demo Text'),
             ElevatedButton(
-              child: Text('Return'),
+              child: const Text('Return'),
               onPressed: () {
                 Navigator.pop(context);
               },

@@ -4,35 +4,35 @@ import 'hourly_breakdown_page.dart';
 import 'weather_api.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage();
+  const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
-    int example_weather_value = WeatherApi.exampleRequest();
+    int exampleWeatherValue = WeatherApi.exampleRequest();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text('Nightwatch'),
+        title: const Text('Nightwatch'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Demo Text $example_weather_value'),
+            Text('Demo Text $exampleWeatherValue'),
             ElevatedButton(
-              child: Text('Open Search Page'),
+              child: const Text('Open Search Page'),
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SearchPage()),
+                  MaterialPageRoute(builder: (context) => const SearchPage()),
                 );
               },
             ),
             ElevatedButton(
-              child: Text('Open Hourly Breakdown Page'),
+              child: const Text('Open Hourly Breakdown Page'),
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HourlyBreakdownPage()),
+                  MaterialPageRoute(builder: (context) => const HourlyBreakdownPage()),
                 );
               },
             ),
