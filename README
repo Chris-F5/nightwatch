@@ -7,6 +7,7 @@ BUILD INSTRUCTIONS
 
   1. Install the flutter development environment [1]. 
   2. Run `flutter pub get` to install dependencies. 
-  3. Execute `flutter run` to build and run the application.
+  3. Run `dart run flutter_launcher_icons:main` to create icons.
+  4. Run `flutter run` to build and run the application.
 
 [1] https://docs.flutter.dev/get-started/install
