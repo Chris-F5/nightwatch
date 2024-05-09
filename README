@@ -2,3 +2,10 @@ NIGHTWATCH
 
 Weather app for stargazers. Built as coursework for part IA interaction design
 course.
+
+BUILD INSTRUCTIONS
+
+After installing the flutter development environment [1], execute `flutter run`
+from the project root directory to build and run the application.
+
+[1] https://docs.flutter.dev/get-started/install
