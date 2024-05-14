@@ -23,4 +23,8 @@ flutter_launcher_icons:
   ios: true
 
 flutter:
+  assets:
+    - assets/
+
+flutter:
   uses-material-design: true
