@@ -9,10 +9,14 @@ class HomePage extends StatelessWidget {
   // Placeholder variables
   final String currentLocation = "Cambridge, UK";
   final String stargazingCondition = "Bad";
-  final String moonPhase = "third quarter";
+  final String moonPhase = "full moon";
   final int lowTemp = 7;
   final int highTemp = 19;
-  final int currentTemp = 15;
+  final int currentTemp = 5;
+  final String dawn = "04:22";
+  final String dusk = "21:30";
+  final String seeing = "1.4\"";
+  final String transparency = "1.2/1";
 
   Color getStarGazingConditionColor(String condition) {
     switch (condition.toLowerCase()) {
@@ -161,6 +165,38 @@ class HomePage extends StatelessWidget {
                 height: 150.0,
               ),
             ),
+            Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40.0, vertical: 8.0),
+                child: Row(children: <Widget>[
+                  Text(
+                    "L: $lowTemp°",
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                  const Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: Text(
+                      "$currentTemp°",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 40.0,
+                      ),
+                    ),
+                  ),
+                  const Spacer(),
+                  Text("L: $highTemp°",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                      ))
+                ]))
           ],
         ),
       ),
