@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
+import 'weather_api.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -16,9 +17,9 @@ class SearchPageState extends State<SearchPage> {
   void loadRegion(String location) async {
     setState(() { this.loading = true; });
     /* This is where the api call will take place. */
-    await Future.delayed(Duration(seconds: 3));
+    Map<String, dynamic> apiData = await WeatherApi.fetchData();
     /* Results from api call will be passed to home page. */
-    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(apiData)));
     /*
      * Wait a bit before removing loading text so we dont change before home
      * page has covered up search page.
