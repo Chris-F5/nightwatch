@@ -10,6 +10,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
+        automaticallyImplyLeading: false,
         title: Text('Nightwatch'),
       ),
       body: Center(
