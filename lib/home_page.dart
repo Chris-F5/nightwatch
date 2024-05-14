@@ -10,9 +10,9 @@ class HomePage extends StatelessWidget {
   final String currentLocation = "Cambridge, UK";
   final String stargazingCondition = "Bad";
   final String moonPhase = "full moon";
+  final int currentTemp = 5;
   final int lowTemp = 7;
   final int highTemp = 19;
-  final int currentTemp = 5;
   final String dawn = "04:22";
   final String dusk = "21:30";
   final String seeing = "1.4\"";
@@ -65,11 +65,11 @@ class HomePage extends StatelessWidget {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(255, 16, 42, 67),
+              Color.fromARGB(255, 2, 4, 7),
               Color.fromARGB(255, 21, 31, 50)
             ],
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: Column(
