@@ -4,41 +4,155 @@ import 'weather_api.dart';
 
 class HomePage extends StatelessWidget {
   late Map<String, dynamic> apiData;
-  HomePage(Map<String, dynamic> apiData) {
-    this.apiData = apiData;
+  HomePage(this.apiData, {super.key});
+
+  // Placeholder variables
+  final String currentLocation = "Cambridge, UK";
+  final String stargazingCondition = "Bad";
+  final String moonPhase = "Waxing Crescent";
+
+  Color getStarGazingConditionColor(String condition) {
+    switch (condition.toLowerCase()) {
+      case "excellent":
+        return const Color.fromARGB(255, 0, 199, 139);
+      case "good":
+        return const Color.fromARGB(255, 52, 199, 54);
+      case "okay":
+        return const Color.fromARGB(255, 255, 229, 0);
+      case "bad":
+        return const Color.fromARGB(255, 255, 149, 0);
+      case "terrible":
+        return const Color.fromARGB(255, 255, 59, 48);
+      default:
+        return Colors.grey;
+    }
   }
+
+  String getMoonPhaseImage(String moonPhase) {
+    switch (moonPhase.toLowerCase()) {
+      case "new moon":
+        return "assets/new_moon.png";
+      case "waxing crescent":
+        return "assets/waxing_crescent.png";
+      case "first quarter":
+        return "assets/first_quarter.png";
+      case "waxing gibbous":
+        return "assets/waxing_gibbous.png";
+      case "full moon":
+        return "assets/full_moon.png";
+      case "waning gibbous":
+        return "assets/waning_gibbous.png";
+      case "third quarter":
+        return "assets/third_quarter.png";
+      case "waning crescent":
+        return "assets/waning_crescent.png";
+      default:
+        return "assets/new_moon.png";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final demoText = apiData['morning']['frogs'];
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        automaticallyImplyLeading: false,
-        title: Text('Nightwatch'),
-      ),
-      body: Center(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 16, 42, 67),
+              Color.fromARGB(255, 21, 31, 50)
+            ],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+          ),
+        ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Text('Demo Text $demoText'),
-            ElevatedButton(
-              child: Text('Return to Search Page'),
-              onPressed: () {
-                Navigator.pop(context);
-              },
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  height: 40.0,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10.0),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black,
+                        blurRadius: 4.0,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      const Icon(Icons.search, color: Colors.grey),
+                      const SizedBox(width: 8.0),
+                      Expanded(
+                        child: Text(
+                          currentLocation,
+                          style: const TextStyle(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.0),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
-            ElevatedButton(
-              child: Text('Open Hourly Breakdown Page'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HourlyBreakdownPage(apiData)),
-                );
-              },
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Container(
+                height: 40.0,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10.0),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black,
+                      blurRadius: 4.0,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: const Center(
+                  child: Text(
+                    "Placeholder Weekly Overview",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: SizedBox(
+                height: 40.0,
+                child: Center(
+                  child: Text(
+                    stargazingCondition,
+                    style: TextStyle(
+                      color: getStarGazingConditionColor(stargazingCondition),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32.0,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
-        )
-      )
+        ),
+      ),
     );
   }
 }
