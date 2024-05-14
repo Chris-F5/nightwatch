@@ -6,7 +6,7 @@ class HomePage extends StatelessWidget {
   const HomePage();
   @override
   Widget build(BuildContext context) {
-    int example_weather_value = WeatherApi.exampleRequest();
+    String testOutput = WeatherApi.exampleRequest();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Demo Text $example_weather_value'),
+            Text('Demo Text $testOutput'),
             ElevatedButton(
               child: Text('Return to Search Page'),
               onPressed: () {
