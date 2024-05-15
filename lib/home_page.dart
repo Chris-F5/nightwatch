@@ -8,15 +8,17 @@ class HomePage extends StatelessWidget {
 
   // Placeholder variables
   final String currentLocation = "Cambridge, UK";
-  final String stargazingCondition = "Bad";
+  final String stargazingCondition = "good";
   final String moonPhase = "full moon";
   final int currentTemp = 5;
   final int lowTemp = 7;
   final int highTemp = 19;
   final String dawnTime = "04:22";
   final String duskTime = "21:30";
-  final double seeing = 1.4;
-  final double transparency = 1.2;
+  final String seeing = "okay";
+  final String transparency = "excellent";
+
+  String capitalise(String s) => s[0].toUpperCase() + s.substring(1);
 
   Color getStarGazingConditionColor(String condition) {
     switch (condition.toLowerCase()) {
@@ -154,15 +156,15 @@ class HomePage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 16.0, vertical: 8.0),
                     child: SizedBox(
-                      height: 40.0,
+                      height: 48.0,
                       child: Center(
                         child: Text(
-                          stargazingCondition,
+                          capitalise(stargazingCondition),
                           style: TextStyle(
                             color: getStarGazingConditionColor(
                                 stargazingCondition),
                             fontWeight: FontWeight.bold,
-                            fontSize: 32.0,
+                            fontSize: 36.0,
                           ),
                         ),
                       ),
@@ -170,7 +172,7 @@ class HomePage extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 10.0),
+                        horizontal: 16.0, vertical: 12.0),
                     child: Image.asset(
                       getMoonPhaseImage(moonPhase),
                       height: 150.0,
@@ -240,9 +242,9 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              "$seeing\"",
+                              capitalise(seeing),
                               style: TextStyle(
-                                color: getSeeingColor(seeing),
+                                color: getStarGazingConditionColor(seeing),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 24.0,
                               ),
@@ -275,9 +277,10 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              "$transparency",
+                              capitalise(transparency),
                               style: TextStyle(
-                                color: Colors.white,
+                                color:
+                                    getStarGazingConditionColor(transparency),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 24.0,
                               ),
