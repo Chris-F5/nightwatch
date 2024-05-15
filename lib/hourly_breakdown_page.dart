@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HourlyBreakdownPage extends StatelessWidget {
+  late Map<String, dynamic> apiData;
+  HourlyBreakdownPage(Map<String, dynamic> apiData) {
+    this.apiData = apiData;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
