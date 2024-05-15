@@ -308,11 +308,9 @@ class HomePage extends StatelessWidget {
                               decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
-                                    color: getStarGazingConditionColor(
-                                        seeing), // Shadow color with opacity
-                                    offset:
-                                        const Offset(0, -15), // Shadow offset
-                                    blurRadius: 90.0, // Shadow blur radius
+                                    color: getStarGazingConditionColor(seeing),
+                                    offset: const Offset(0, -15),
+                                    blurRadius: 90.0,
                                   ),
                                 ],
                               ),
@@ -368,10 +366,9 @@ class HomePage extends StatelessWidget {
                                 boxShadow: [
                                   BoxShadow(
                                     color: getStarGazingConditionColor(
-                                        transparency), // Shadow color with opacity
-                                    offset:
-                                        const Offset(0, -15), // Shadow offset
-                                    blurRadius: 90.0, // Shadow blur radius
+                                        transparency),
+                                    offset: const Offset(0, -15),
+                                    blurRadius: 90.0,
                                   ),
                                 ],
                               ),
@@ -412,7 +409,7 @@ class HomePage extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          minimumSize: const Size(double.infinity, 50.0),
+                          minimumSize: const Size(double.infinity, 75.0),
                         ),
                         child: const Text(
                           "Hourly Breakdown",
