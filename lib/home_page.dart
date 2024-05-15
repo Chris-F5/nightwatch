@@ -7,7 +7,7 @@ class HomePage extends StatelessWidget {
   const HomePage();
   @override
   Widget build(BuildContext context) {
-    int example_weather_value = WeatherApi.exampleRequest();
+    int example_weather_value = WeatherApi.getWeather();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
