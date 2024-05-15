@@ -101,9 +101,9 @@ class HomePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10.0),
                           boxShadow: const [
                             BoxShadow(
-                              color: Colors.black,
-                              blurRadius: 4.0,
-                              offset: Offset(0, 2),
+                              color: Colors.white,
+                              blurRadius: 8.0,
+                              offset: Offset(0, 0),
                             ),
                           ],
                         ),
@@ -134,9 +134,9 @@ class HomePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: const [
                           BoxShadow(
-                            color: Colors.black,
-                            blurRadius: 4.0,
-                            offset: Offset(0, 2),
+                            color: Colors.white,
+                            blurRadius: 8.0,
+                            offset: Offset(0, 0),
                           ),
                         ],
                       ),
@@ -289,7 +289,50 @@ class HomePage extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: Offset(0, 0),
+                            blurRadius: 8.0,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.grey,
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          minimumSize: const Size(double.infinity, 50.0),
+                        ),
+                        child: const Text(
+                          "Hourly Breakdown",
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    HourlyBreakdownPage(apiData)),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
                 ])));
   }
 }
