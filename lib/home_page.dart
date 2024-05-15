@@ -58,6 +58,16 @@ class HomePage extends StatelessWidget {
     }
   }
 
+  Color getSeeingColor(double seeing) {
+    if (seeing < 1.5) {
+      return const Color.fromARGB(255, 52, 199, 54);
+    } else if (seeing < 2.5) {
+      return const Color.fromARGB(255, 255, 229, 0);
+    } else {
+      return const Color.fromARGB(255, 255, 59, 48);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -230,9 +240,9 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              seeing,
+                              "$seeing\"",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: getSeeingColor(seeing),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 24.0,
                               ),
@@ -265,7 +275,7 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              transparency,
+                              "$transparency",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
