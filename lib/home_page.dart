@@ -158,13 +158,25 @@ class HomePage extends StatelessWidget {
                     child: SizedBox(
                       height: 48.0,
                       child: Center(
-                        child: Text(
-                          capitalise(stargazingCondition),
-                          style: TextStyle(
-                            color: getStarGazingConditionColor(
-                                stargazingCondition),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 36.0,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color:
+                                    Colors.white, // Shadow color with opacity
+                                offset: Offset(0, 0), // Shadow offset
+                                blurRadius: 100.0, // Shadow blur radius
+                              ),
+                            ],
+                          ),
+                          child: Text(
+                            capitalise(stargazingCondition),
+                            style: TextStyle(
+                              color: getStarGazingConditionColor(
+                                  stargazingCondition),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 36.0,
+                            ),
                           ),
                         ),
                       ),
