@@ -9,13 +9,13 @@ class HomePage extends StatelessWidget {
   // Placeholder variables
   final String currentLocation = "Cambridge, UK";
   final String stargazingCondition = "good";
-  final String moonPhase = "full moon";
+  final String moonPhase = "waning crescent";
   final int currentTemp = 5;
   final int lowTemp = 7;
   final int highTemp = 19;
   final String dawnTime = "04:22";
   final String duskTime = "21:30";
-  final String seeing = "okay";
+  final String seeing = "good";
   final String transparency = "excellent";
 
   String capitalise(String s) => s[0].toUpperCase() + s.substring(1);
@@ -277,12 +277,23 @@ class HomePage extends StatelessWidget {
                                 fontSize: 18.0,
                               ),
                             ),
-                            Text(
-                              duskTime,
-                              style: const TextStyle(
-                                color: Color.fromARGB(255, 255, 250, 160),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24.0,
+                            Container(
+                              decoration: const BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color.fromARGB(255, 255, 250, 160),
+                                    offset: Offset(0, -15),
+                                    blurRadius: 90.0,
+                                  ),
+                                ],
+                              ),
+                              child: Text(
+                                duskTime,
+                                style: const TextStyle(
+                                  color: Color.fromARGB(255, 255, 250, 160),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24.0,
+                                ),
                               ),
                             ),
                             const SizedBox(height: 20.0),
@@ -293,12 +304,25 @@ class HomePage extends StatelessWidget {
                                 fontSize: 18.0,
                               ),
                             ),
-                            Text(
-                              capitalise(seeing),
-                              style: TextStyle(
-                                color: getStarGazingConditionColor(seeing),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24.0,
+                            Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: getStarGazingConditionColor(
+                                        seeing), // Shadow color with opacity
+                                    offset:
+                                        const Offset(0, -15), // Shadow offset
+                                    blurRadius: 90.0, // Shadow blur radius
+                                  ),
+                                ],
+                              ),
+                              child: Text(
+                                capitalise(seeing),
+                                style: TextStyle(
+                                  color: getStarGazingConditionColor(seeing),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24.0,
+                                ),
                               ),
                             ),
                           ],
@@ -312,12 +336,23 @@ class HomePage extends StatelessWidget {
                                 fontSize: 18.0,
                               ),
                             ),
-                            Text(
-                              dawnTime,
-                              style: const TextStyle(
-                                color: Color.fromARGB(255, 255, 250, 160),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24.0,
+                            Container(
+                              decoration: const BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color.fromARGB(255, 255, 250, 160),
+                                    offset: Offset(0, -15),
+                                    blurRadius: 90.0,
+                                  ),
+                                ],
+                              ),
+                              child: Text(
+                                dawnTime,
+                                style: const TextStyle(
+                                  color: Color.fromARGB(255, 255, 250, 160),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24.0,
+                                ),
                               ),
                             ),
                             const SizedBox(height: 20.0),
@@ -334,8 +369,9 @@ class HomePage extends StatelessWidget {
                                   BoxShadow(
                                     color: getStarGazingConditionColor(
                                         transparency), // Shadow color with opacity
-                                    offset: const Offset(0, 0), // Shadow offset
-                                    blurRadius: 75.0, // Shadow blur radius
+                                    offset:
+                                        const Offset(0, -15), // Shadow offset
+                                    blurRadius: 90.0, // Shadow blur radius
                                   ),
                                 ],
                               ),
