@@ -180,7 +180,7 @@ class HomePage extends StatelessWidget {
                   ),
                   Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 40.0, vertical: 8.0),
+                          horizontal: 48.0, vertical: 4.0),
                       child: Row(children: <Widget>[
                         Text(
                           "L: $lowTemp°",
@@ -219,7 +219,7 @@ class HomePage extends StatelessWidget {
                         Column(
                           children: <Widget>[
                             const Text(
-                              'Dusk',
+                              "Dusk ↓",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18.0,
@@ -233,9 +233,9 @@ class HomePage extends StatelessWidget {
                                 fontSize: 24.0,
                               ),
                             ),
-                            const SizedBox(height: 12.0),
+                            const SizedBox(height: 20.0),
                             const Text(
-                              'Seeing',
+                              "Seeing",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18.0,
@@ -254,7 +254,7 @@ class HomePage extends StatelessWidget {
                         Column(
                           children: <Widget>[
                             const Text(
-                              'Dawn',
+                              "Dawn ↑",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18.0,
@@ -268,9 +268,9 @@ class HomePage extends StatelessWidget {
                                 fontSize: 24.0,
                               ),
                             ),
-                            const SizedBox(height: 12.0),
+                            const SizedBox(height: 20.0),
                             const Text(
-                              'Transparency',
+                              "Transparency",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18.0,
