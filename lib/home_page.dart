@@ -15,8 +15,8 @@ class HomePage extends StatelessWidget {
   final int highTemp = 19;
   final String dawnTime = "04:22";
   final String duskTime = "21:30";
-  final String seeing = "1.4\"";
-  final String transparency = "1.2/1";
+  final double seeing = 1.4;
+  final double transparency = 1.2;
 
   Color getStarGazingConditionColor(String condition) {
     switch (condition.toLowerCase()) {
@@ -200,49 +200,82 @@ class HomePage extends StatelessWidget {
                       ])),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 75.0, vertical: 8.0),
+                        horizontal: 80.0, vertical: 16.0),
                     child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              const Text(
-                                'Dusk',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16.0,
-                                ),
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            const Text(
+                              'Dusk',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18.0,
                               ),
-                              Text(
-                                duskTime,
-                                style: const TextStyle(
-                                  color: Colors.yellow,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20.0,
-                                ),
+                            ),
+                            Text(
+                              duskTime,
+                              style: const TextStyle(
+                                color: Color.fromARGB(255, 255, 250, 160),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24.0,
                               ),
-                            ],
-                          ),
-                          Column(
-                            children: <Widget>[
-                              const Text(
-                                'Dawn',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16.0,
-                                ),
+                            ),
+                            const SizedBox(height: 12.0),
+                            const Text(
+                              'Seeing',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18.0,
                               ),
-                              Text(
-                                dawnTime,
-                                style: const TextStyle(
-                                  color: Colors.yellow,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20.0,
-                                ),
-                              )
-                            ],
-                          ),
-                        ]),
+                            ),
+                            Text(
+                              seeing,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: <Widget>[
+                            const Text(
+                              'Dawn',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18.0,
+                              ),
+                            ),
+                            Text(
+                              dawnTime,
+                              style: const TextStyle(
+                                color: Color.fromARGB(255, 255, 250, 160),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24.0,
+                              ),
+                            ),
+                            const SizedBox(height: 12.0),
+                            const Text(
+                              'Transparency',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18.0,
+                              ),
+                            ),
+                            Text(
+                              transparency,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   )
                 ])));
   }
