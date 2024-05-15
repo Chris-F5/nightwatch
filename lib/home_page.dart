@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'hourly_breakdown_page.dart';
 import 'weather_api.dart';
@@ -8,7 +9,7 @@ class HomePage extends StatelessWidget {
 
   // Placeholder variables
   final String currentLocation = "Cambridge, UK";
-  final String stargazingCondition = "good";
+  final String stargazingCondition = "excellent";
   final String moonPhase = "waning crescent";
   final int currentTemp = 5;
   final int lowTemp = 7;
@@ -77,7 +78,7 @@ class HomePage extends StatelessWidget {
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color.fromARGB(255, 2, 4, 7),
+                  Color.fromARGB(255, 0, 0, 0),
                   Color.fromARGB(255, 21, 31, 50)
                 ],
                 begin: Alignment.topCenter,
@@ -159,11 +160,12 @@ class HomePage extends StatelessWidget {
                       height: 48.0,
                       child: Center(
                         child: Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.white,
-                                offset: Offset(0, 20),
+                                color: getStarGazingConditionColor(
+                                    stargazingCondition),
+                                offset: const Offset(0, 0),
                                 blurRadius: 100.0,
                               ),
                             ],
@@ -200,8 +202,8 @@ class HomePage extends StatelessWidget {
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.white,
-                                  offset: Offset(25, -25),
-                                  blurRadius: 125.0,
+                                  offset: Offset(20, -20),
+                                  blurRadius: 120.0,
                                 ),
                               ],
                             ),
@@ -246,8 +248,8 @@ class HomePage extends StatelessWidget {
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.white,
-                                  offset: Offset(-25, -25),
-                                  blurRadius: 125.0,
+                                  offset: Offset(-20, -20),
+                                  blurRadius: 120.0,
                                 ),
                               ],
                             ),
@@ -412,7 +414,7 @@ class HomePage extends StatelessWidget {
                           minimumSize: const Size(double.infinity, 75.0),
                         ),
                         child: const Text(
-                          "Hourly Breakdown",
+                          "Placeholder Hourly Breakdown",
                           style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.bold,
