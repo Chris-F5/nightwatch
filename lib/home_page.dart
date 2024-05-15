@@ -162,10 +162,9 @@ class HomePage extends StatelessWidget {
                           decoration: const BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                color:
-                                    Colors.white, // Shadow color with opacity
-                                offset: Offset(0, 0), // Shadow offset
-                                blurRadius: 100.0, // Shadow blur radius
+                                color: Colors.white,
+                                offset: Offset(0, 20),
+                                blurRadius: 100.0,
                               ),
                             ],
                           ),
@@ -194,33 +193,74 @@ class HomePage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 48.0, vertical: 4.0),
                       child: Row(children: <Widget>[
-                        Text(
-                          "L: $lowTemp°",
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.white,
+                                  offset: Offset(25, -25),
+                                  blurRadius: 125.0,
+                                ),
+                              ],
+                            ),
+                            child: Text(
+                              "L: $lowTemp°",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                              ),
+                            ),
                           ),
                         ),
                         const Spacer(),
                         Padding(
                           padding: const EdgeInsets.only(left: 20.0),
-                          child: Text(
-                            "$currentTemp°",
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 48.0,
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.white,
+                                  offset: Offset(0, -20),
+                                  blurRadius: 100.0,
+                                ),
+                              ],
+                            ),
+                            child: Text(
+                              "$currentTemp°",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 48.0,
+                              ),
                             ),
                           ),
                         ),
                         const Spacer(),
-                        Text("H: $highTemp°",
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
-                            ))
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.white,
+                                  offset: Offset(-25, -25),
+                                  blurRadius: 125.0,
+                                ),
+                              ],
+                            ),
+                            child: Text(
+                              "H: $highTemp°",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                              ),
+                            ),
+                          ),
+                        ),
                       ])),
                   Padding(
                     padding: const EdgeInsets.symmetric(
