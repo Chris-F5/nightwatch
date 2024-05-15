@@ -328,13 +328,25 @@ class HomePage extends StatelessWidget {
                                 fontSize: 18.0,
                               ),
                             ),
-                            Text(
-                              capitalise(transparency),
-                              style: TextStyle(
-                                color:
-                                    getStarGazingConditionColor(transparency),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24.0,
+                            Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: getStarGazingConditionColor(
+                                        transparency), // Shadow color with opacity
+                                    offset: const Offset(0, 0), // Shadow offset
+                                    blurRadius: 75.0, // Shadow blur radius
+                                  ),
+                                ],
+                              ),
+                              child: Text(
+                                capitalise(transparency),
+                                style: TextStyle(
+                                  color:
+                                      getStarGazingConditionColor(transparency),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24.0,
+                                ),
                               ),
                             ),
                           ],
