@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'hourly_breakdown_page.dart';
 import 'package:starsview/starsview.dart';
+import 'package:intl/intl.dart';
 import 'weather_api.dart';
 
 // ignore: must_be_immutable
@@ -10,10 +11,7 @@ class HomePage extends StatelessWidget {
 
   // Placeholder variables
   final String stargazingCondition = "excellent";
-  final String seeing = "good";
-  final String transparency = "excellent";
 
-  final String currentDay = "THU";
   final String inOneDayCondition = "good";
   final String inTwoDaysCondition = "bad";
   final String inThreeDaysCondition = "good";
@@ -84,6 +82,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DateTime currentDate = DateTime.now();
+    String currentDay = DateFormat('EEEE').format(currentDate);
+    currentDay = currentDay.substring(0, 3).toUpperCase();
+
     int currentIndex = daysOfWeek.indexOf(currentDay);
 
     List<String> nextSevenDays = [];
@@ -102,6 +104,37 @@ class HomePage extends StatelessWidget {
     final int currentTemp = (apiData["days"].sublist(0, 6)[0]["temp"]).round();
     final int highTemp = (apiData["days"].sublist(0, 6)[0]["tempmax"]).round();
     final int lowTemp = (apiData["days"].sublist(0, 6)[0]["tempmin"]).round();
+
+    String date = apiData["days"].sublist(0, 6)[0]["datetime"];
+    date = date.substring(date.length - 2, date.length);
+    double seeingNum = int.parse(date) % 3;
+    double transparencyNum = (int.parse(date) % 3) - 1;
+
+    String seeing;
+    if (seeingNum == 0) {
+      seeing = "excellent";
+    } else if (seeingNum == 1) {
+      seeing = "good";
+    } else if (seeingNum == 2) {
+      seeing = "okay";
+    } else if (seeingNum == 3) {
+      seeing = "bad";
+    } else {
+      seeing = "terrible";
+    }
+
+    String transparency;
+    if (transparencyNum == 0) {
+      transparency = "excellent";
+    } else if (transparencyNum == 1) {
+      transparency = "good";
+    } else if (transparencyNum == 2) {
+      transparency = "okay";
+    } else if (transparencyNum == 3) {
+      transparency = "bad";
+    } else {
+      transparency = "terrible";
+    }
 
     nextSevenDays[nextSevenDays.indexOf(currentDay)] =
         "|${nextSevenDays[nextSevenDays.indexOf(currentDay)]}|";
