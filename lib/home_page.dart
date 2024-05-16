@@ -266,7 +266,7 @@ class HomePage extends StatelessWidget {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.white,
-                        offset: Offset(20, -20),
+                        offset: Offset(0, 0),
                         blurRadius: 120.0,
                       ),
                     ],
@@ -289,7 +289,7 @@ class HomePage extends StatelessWidget {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.white,
-                        offset: Offset(0, -20),
+                        offset: Offset(0, 0),
                         blurRadius: 100.0,
                       ),
                     ],
@@ -312,7 +312,7 @@ class HomePage extends StatelessWidget {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.white,
-                        offset: Offset(-20, -20),
+                        offset: Offset(0, 0),
                         blurRadius: 120.0,
                       ),
                     ],
