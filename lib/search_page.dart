@@ -26,7 +26,7 @@ class SearchPageState extends State<SearchPage> {
   void loadRegion(String location) async {
     setState(() { this.loading = true; });
     /* This is where the api call will take place. */
-    Map<String, dynamic> apiData = await WeatherApi.fetchData();
+    Map<String, dynamic> apiData = await WeatherApi.getWeather(location);
     /* Results from api call will be passed to home page. */
     Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(apiData)));
     /*
