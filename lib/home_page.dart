@@ -10,15 +10,6 @@ class HomePage extends StatelessWidget {
 
   // Placeholder variables
   final String stargazingCondition = "excellent";
-  final double moonPhase = 0.8;
-
-  final int currentTemp = 5;
-  final int lowTemp = 7;
-  final int highTemp = 19;
-
-  final String sunrise = "04:22";
-  final String sunset = "21:30";
-
   final String seeing = "good";
   final String transparency = "excellent";
 
@@ -102,10 +93,15 @@ class HomePage extends StatelessWidget {
 
     final String currentLocation = apiData['address'];
     final double moonPhase = apiData["days"].sublist(0, 6)[0]["moonphase"];
+
     String sunset = apiData["days"].sublist(0, 6)[0]["sunset"];
     sunset = sunset.substring(0, sunset.length - 3);
     String sunrise = apiData["days"].sublist(0, 6)[0]["sunrise"];
     sunrise = sunrise.substring(0, sunrise.length - 3);
+
+    final int currentTemp = (apiData["days"].sublist(0, 6)[0]["temp"]).round();
+    final int highTemp = (apiData["days"].sublist(0, 6)[0]["tempmax"]).round();
+    final int lowTemp = (apiData["days"].sublist(0, 6)[0]["tempmin"]).round();
 
     nextSevenDays[nextSevenDays.indexOf(currentDay)] =
         "|${nextSevenDays[nextSevenDays.indexOf(currentDay)]}|";
