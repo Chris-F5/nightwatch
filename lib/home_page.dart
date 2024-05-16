@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   // Placeholder variables
   final String currentLocation = "Cambridge, UK";
   final String stargazingCondition = "excellent";
-  final String moonPhase = "waning crescent";
+  final double moonPhase = 0.8;
 
   final int currentTemp = 5;
   final int lowTemp = 7;
@@ -59,26 +59,48 @@ class HomePage extends StatelessWidget {
     }
   }
 
-  String getMoonPhaseImage(String moonPhase) {
-    switch (moonPhase.toLowerCase()) {
-      case "new moon":
-        return "assets/new_moon.png";
-      case "waxing crescent":
-        return "assets/waxing_crescent.png";
-      case "first quarter":
-        return "assets/first_quarter.png";
-      case "waxing gibbous":
-        return "assets/waxing_gibbous.png";
-      case "full moon":
-        return "assets/full_moon.png";
-      case "waning gibbous":
-        return "assets/waning_gibbous.png";
-      case "third quarter":
-        return "assets/third_quarter.png";
-      case "waning crescent":
-        return "assets/waning_crescent.png";
-      default:
-        return "assets/new_moon.png";
+  // String getMoonPhaseImage(String moonPhase) {
+  //   switch (moonPhase.toLowerCase()) {
+  //     case "new moon":
+  //       return "assets/new_moon.png";
+  //     case "waxing crescent":
+  //       return "assets/waxing_crescent.png";
+  //     case "first quarter":
+  //       return "assets/first_quarter.png";
+  //     case "waxing gibbous":
+  //       return "assets/waxing_gibbous.png";
+  //     case "full moon":
+  //       return "assets/full_moon.png";
+  //     case "waning gibbous":
+  //       return "assets/waning_gibbous.png";
+  //     case "third quarter":
+  //       return "assets/third_quarter.png";
+  //     case "waning crescent":
+  //       return "assets/waning_crescent.png";
+  //     default:
+  //       return "assets/new_moon.png";
+  //   }
+  // }
+
+  String getMoonPhaseImage(double moonPhase) {
+    if (moonPhase == 0) {
+      return "assets/new_moon.png";
+    } else if (moonPhase < 0.25) {
+      return "assets/waxing_crescent.png";
+    } else if (moonPhase == 0.25) {
+      return "assets/first_quarter.png";
+    } else if (moonPhase < 0.5) {
+      return "assets/waxing_gibbous.png";
+    } else if (moonPhase == 0.5) {
+      return "assets/full_moon.png";
+    } else if (moonPhase < 0.75) {
+      return "assets/waning_gibbous.png";
+    } else if (moonPhase == 0.75) {
+      return "assets/third_quarter.png";
+    } else if (moonPhase <= 1) {
+      return "assets/waning_crescent.png";
+    } else {
+      return "assets/full_moon.png";
     }
   }
 
