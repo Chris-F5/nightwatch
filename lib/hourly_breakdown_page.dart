@@ -9,7 +9,7 @@ class HourlyBreakdownPage extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
-    const String location = "temp_location";
+    final String location = apiData['address'];
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(
@@ -36,22 +36,22 @@ class HourlyBreakdownPage extends StatelessWidget {
           const StarsView(
             fps: 60,
           ),
-          const Column(
+          Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
             Padding(padding: EdgeInsets.all(16.0), child: Column(
               children: <Widget>[
                 Text(location,
-                    style: TextStyle(
+                    style: const TextStyle(
                     color: Color.fromARGB(240, 255, 255, 255),
                     fontWeight: FontWeight.bold,
                     fontSize: 36.0)),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 SingleChildScrollView(
                   child: Row(
                     children: <Widget>[
-                      FixedColumnWidget(),
-                      ScrollableColumnWidget(),
+                      const FixedColumnWidget(),
+                      ScrollableColumnWidget(this.apiData),
                     ],
                   ),
                 )]
@@ -93,24 +93,29 @@ class FixedColumnWidget extends StatelessWidget {
 }
 
 class ScrollableColumnWidget extends StatelessWidget {
-  const ScrollableColumnWidget({super.key});
+  late Map<String, dynamic> apiData;
+  ScrollableColumnWidget(apiData) {
+    this.apiData = apiData;
+  }
 
   @override
   Widget build(BuildContext context) {
     List<DataColumn> cols = [];
-    for(int i = 0; i < 10; i++) {
-      cols.add(DataColumn(label: Text(i.toString())));
+
+    List<dynamic> hours = apiData['days'][0]['hours'];
+    List<String> attributes = ["cloudcover", "precipprob", "windspeed", "winddir", "temp", "humidity", "visibility"];
+    for(int i = 0; i < 24; i++) {
+      Map<String, dynamic> hour = hours[i];
+      cols.add(DataColumn(label: Text(hour["datetime"].substring(0, 5))));
     }
     List<DataRow> rows = [];
     for(int i = 0; i < 7; i++) {
       List<DataCell> cells = [];
-      for(int j = 0; j < 10; j++) {
+      for(int j = 0; j < 24; j++) {
         cells.add(DataCell(
             Container(
                 alignment: AlignmentDirectional.center,
-                child: Text(
-                  (((i + 1) * (j + 1)).toString())
-                ))));
+                child: Text(hours[j][attributes[i]].toString()))));
       }
       rows.add(DataRow(cells: cells));
     }
