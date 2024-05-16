@@ -2,22 +2,26 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
+void main() async {
+  final weatherApi = WeatherApi();
+
+  final weatherData = await weatherApi.getWeather('Cambridge');
+  print(weatherData);
+}
+
 class WeatherApi {
 
 
-  Future<http.Response> getWeather(String location) async {
+  Future<Map<String, dynamic>> getWeather(String location) async {
     final response = await http.get(Uri.parse(
         'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location},UK?unitGroup=uk&key=6N2KTB9AP7VU5JTN5WRKUNXPC'));
 
     if (response.statusCode == 200) {
-      return jsonDecode(response.body) as Map<String, dynamic>;
+      final decoded = jsonDecode(response.body) as Map<String, dynamic>;
+      return decoded;
     } else {
-      throw Exception('Failed to load data');
+      throw Exception('Failed to load data: ${response.statusCode}');
     }
-  }
-
-  void main() {
-    print('Hello, world!');
   }
 
 }
