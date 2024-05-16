@@ -3,6 +3,7 @@ import 'hourly_breakdown_page.dart';
 import 'package:starsview/starsview.dart';
 import 'weather_api.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
   late Map<String, dynamic> apiData;
   HomePage(this.apiData, {super.key});
@@ -11,15 +12,17 @@ class HomePage extends StatelessWidget {
   final String currentLocation = "Cambridge, UK";
   final String stargazingCondition = "excellent";
   final String moonPhase = "waning crescent";
+
   final int currentTemp = 5;
   final int lowTemp = 7;
   final int highTemp = 19;
+
   final String dawnTime = "04:22";
   final String duskTime = "21:30";
   final String seeing = "good";
   final String transparency = "excellent";
-  final String currentDay = "THU";
 
+  final String currentDay = "THU";
   final String inOneDayCondition = "good";
   final String inTwoDaysCondition = "bad";
   final String inThreeDaysCondition = "good";
