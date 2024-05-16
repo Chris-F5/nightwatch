@@ -4,10 +4,10 @@ import 'dart:async';
 
 class WeatherApi {
 
-  DateTime now = DateTime.now();
 
   Future<http.Response> getWeather(String location) async {
-    final response =  await http.get(Uri.parse('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location},UK?unitGroup=uk&key=6N2KTB9AP7VU5JTN5WRKUNXPC'));
+    final response = await http.get(Uri.parse(
+        'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location},UK?unitGroup=uk&key=6N2KTB9AP7VU5JTN5WRKUNXPC'));
 
     if (response.statusCode == 200) {
       return jsonDecode(response.body) as Map<String, dynamic>;
@@ -15,6 +15,12 @@ class WeatherApi {
       throw Exception('Failed to load data');
     }
   }
+
+  void main() {
+    print('Hello, world!');
+  }
+
+}
 
   /*
   static Future<Map<String, dynamic>> fetchData() async {
@@ -41,7 +47,4 @@ class WeatherApi {
     return data['morning']['clouds'];
 
    */
-  }
 
-
-}
