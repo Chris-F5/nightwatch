@@ -101,6 +101,9 @@ class HomePage extends StatelessWidget {
       nextSevenDays.add(daysOfWeek[(currentIndex + i) % 7]);
     }
 
+    nextSevenDays[nextSevenDays.indexOf(currentDay)] =
+        "|${nextSevenDays[nextSevenDays.indexOf(currentDay)]}|";
+
     return Scaffold(
         body: SafeArea(
             child: Stack(children: <Widget>[
