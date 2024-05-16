@@ -59,29 +59,6 @@ class HomePage extends StatelessWidget {
     }
   }
 
-  // String getMoonPhaseImage(String moonPhase) {
-  //   switch (moonPhase.toLowerCase()) {
-  //     case "new moon":
-  //       return "assets/new_moon.png";
-  //     case "waxing crescent":
-  //       return "assets/waxing_crescent.png";
-  //     case "first quarter":
-  //       return "assets/first_quarter.png";
-  //     case "waxing gibbous":
-  //       return "assets/waxing_gibbous.png";
-  //     case "full moon":
-  //       return "assets/full_moon.png";
-  //     case "waning gibbous":
-  //       return "assets/waning_gibbous.png";
-  //     case "third quarter":
-  //       return "assets/third_quarter.png";
-  //     case "waning crescent":
-  //       return "assets/waning_crescent.png";
-  //     default:
-  //       return "assets/new_moon.png";
-  //   }
-  // }
-
   String getMoonPhaseImage(double moonPhase) {
     if (moonPhase == 0) {
       return "assets/new_moon.png";
