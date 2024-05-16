@@ -1,7 +1,6 @@
 NIGHTWATCH
 
-Weather app for stargazers. Built as coursework for part IA interaction design
-course.
+Weather app for stargazers. Built as coursework for part IA interaction design course.
 
 BUILD INSTRUCTIONS
 
@@ -11,3 +10,5 @@ BUILD INSTRUCTIONS
   4. Run `flutter run` to build and run the application.
 
 [1] https://docs.flutter.dev/get-started/install
+
+API used: Visual Crossing Weather API
