@@ -100,7 +100,12 @@ class HomePage extends StatelessWidget {
       nextSevenDays.add(daysOfWeek[(currentIndex + i) % 7]);
     }
 
-    final String currentLocation = this.apiData['address'];
+    final String currentLocation = apiData['address'];
+    final double moonPhase = apiData["days"].sublist(0, 6)[0]["moonphase"];
+    String sunset = apiData["days"].sublist(0, 6)[0]["sunset"];
+    sunset = sunset.substring(0, sunset.length - 3);
+    String sunrise = apiData["days"].sublist(0, 6)[0]["sunrise"];
+    sunrise = sunrise.substring(0, sunrise.length - 3);
 
     nextSevenDays[nextSevenDays.indexOf(currentDay)] =
         "|${nextSevenDays[nextSevenDays.indexOf(currentDay)]}|";
