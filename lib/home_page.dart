@@ -142,7 +142,7 @@ class HomePage extends StatelessWidget {
               ),
               child: Row(
                 children: <Widget>[
-                  const Icon(Icons.search, color: Colors.grey),
+                  const Icon(Icons.arrow_back, color: Colors.grey),
                   const SizedBox(width: 8.0),
                   Expanded(
                     child: Text(
