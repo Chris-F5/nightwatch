@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Nightwatch',
       home: SearchPage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

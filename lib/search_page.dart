@@ -13,13 +13,14 @@ class SearchPageState extends State<SearchPage> {
   bool loading = false;
 
   String textInput = "";
-  List<String> knownLocations = ["Cambridge", "Oxford", "Warwick", "Manchester", "Bristol", "London"];
-  List<String> recentLocations = ["Cambridge", "Oxford", "Warwick", "Manchester", "Bristol"];
+  List<String> knownLocations = ["Cambridge", "Oxford", "Warwick", "Manchester", "Bristol", "London", "Edinburgh"];
+  List<String> recentLocations = ["Cambridge", "Oxford", "Warwick", "Manchester", "Bristol", "London", "Edinburgh"];
 
   TextEditingController searchBarController = TextEditingController();
 
   @override
   void initState() {
+    super.initState();
     loadRegion("Cambridge");
   }
   void loadRegion(String location) async {
@@ -97,14 +98,6 @@ class SearchPageState extends State<SearchPage> {
         appBar: AppBar(
           backgroundColor: Color(0xff1c232b),
           title: const Text('Night Watch', style: TextStyle(color: Colors.white70)),
-          // actions:[
-          //   IconButton(
-          //       onPressed: () {
-          //         showSearch(context: context, delegate: CustomSearchDelegate());
-          //       },
-          //       icon:Icon(Icons.search, color: Colors.white70)
-          //   ),
-          //]
 
         ),
 
@@ -113,7 +106,7 @@ class SearchPageState extends State<SearchPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
 
-              children: this.loading ? <Widget>[Text('Loading'),]
+              children: this.loading ? <Widget>[Center(child: Text('Loading...')),]
               : <Widget>[
                 SizedBox(height: 10),
                 Container(
@@ -162,7 +155,7 @@ class SearchPageState extends State<SearchPage> {
                           controller: searchBarController,
                           cursorColor: Colors.white70,
                           style:TextStyle(color: Colors.white70),
-                          maxLines: 2,
+                          maxLines: 1,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Enter a Location ...",
@@ -180,11 +173,12 @@ class SearchPageState extends State<SearchPage> {
                   width: 300,
                   child: Text("Recent Locations", style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold)),
                 ),//Text
-                SizedBox(height: 10),//Spacing
+                SizedBox(height: 5,),
+                Container(height: 2, width: 320, color: Colors.white70,),//Spacing
                 Expanded(
 
-                  child: Column(
-                    //children: [RecentLocationContainer(location: "Cambridge", buttonFunction: loadRegion)],
+                  child: ListView(
+                    padding: EdgeInsets.all(20),
                     children: applySpacing(recentLocations.map((loc) => RecentLocationContainer(location: loc, buttonFunction: loadRegion,)).toList()),
                   ),
                 )
@@ -250,66 +244,3 @@ class RecentLocationContainer extends StatelessWidget {
   }
 }
 
-class CustomSearchDelegate extends SearchDelegate {
-  List<String> searchTerms = ["Cambridge", "Oxford", "Durham"];
-
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        icon: Icon(Icons.clear),
-        onPressed: () {
-          query = '';
-        },
-      )
-    ];
-  }
-
-  @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
-      icon: const Icon(Icons.arrow_back),
-      onPressed: () {
-        close(context, null);
-      },
-    );
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    List<String> matchQuery = [];
-    for (var town in searchTerms) {
-      if (town.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(town);
-      }
-    }
-    return ListView.builder(
-      itemCount: matchQuery.length,
-      itemBuilder: (context, index) {
-        var result = matchQuery[index];
-        return ListTile(
-            title: Text(result)
-        );
-      },
-    );
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    List<String> matchQuery = [];
-    for (var town in searchTerms) {
-      if (town.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(town);
-      }
-    }
-    return ListView.builder(
-      itemCount: matchQuery.length,
-      itemBuilder: (context, index) {
-        var result = matchQuery[index];
-        return ListTile(
-            title: Text(result)
-        );
-      },
-    );
-  }
-}
