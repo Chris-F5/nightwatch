@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
       case "terrible":
         return const Color.fromARGB(255, 255, 59, 48);
       default:
-        return Colors.grey;
+        return Colors.white;
     }
   }
 
@@ -240,10 +240,20 @@ class HomePage extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-          child: Image.asset(
-            getMoonPhaseImage(moonPhase),
-            height: 150.0,
-          ),
+          child: SizedBox(
+              height: 150.0,
+              child: Container(
+                  decoration: const BoxDecoration(boxShadow: [
+                    BoxShadow(
+                      color: Colors.white,
+                      offset: Offset(0, 0),
+                      blurRadius: 150.0,
+                    )
+                  ]),
+                  child: Image.asset(
+                    getMoonPhaseImage(moonPhase),
+                    height: 150.0,
+                  ))),
         ),
         Padding(
             padding:
