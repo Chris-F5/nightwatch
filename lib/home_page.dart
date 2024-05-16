@@ -17,8 +17,9 @@ class HomePage extends StatelessWidget {
   final int lowTemp = 7;
   final int highTemp = 19;
 
-  final String dawnTime = "04:22";
-  final String duskTime = "21:30";
+  final String sunrise = "04:22";
+  final String sunset = "21:30";
+
   final String seeing = "good";
   final String transparency = "excellent";
 
@@ -325,7 +326,7 @@ class HomePage extends StatelessWidget {
               Column(
                 children: <Widget>[
                   const Text(
-                    "Dusk ↓",
+                    "Sunset ↓",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18.0,
@@ -342,7 +343,7 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                     child: Text(
-                      duskTime,
+                      sunset,
                       style: const TextStyle(
                         color: Color.fromARGB(255, 255, 250, 160),
                         fontWeight: FontWeight.bold,
@@ -382,7 +383,7 @@ class HomePage extends StatelessWidget {
               Column(
                 children: <Widget>[
                   const Text(
-                    "Dawn ↑",
+                    "Sunrise ↑",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18.0,
@@ -399,7 +400,7 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                     child: Text(
-                      dawnTime,
+                      sunrise,
                       style: const TextStyle(
                         color: Color.fromARGB(255, 255, 250, 160),
                         fontWeight: FontWeight.bold,
