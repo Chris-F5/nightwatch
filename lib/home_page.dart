@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'hourly_breakdown_page.dart';
 import 'weather_api.dart';
@@ -18,13 +17,31 @@ class HomePage extends StatelessWidget {
   final String duskTime = "21:30";
   final String seeing = "good";
   final String transparency = "excellent";
+  final String currentDay = "THU";
+
+  final String inOneDayCondition = "good";
+  final String inTwoDaysCondition = "bad";
+  final String inThreeDaysCondition = "good";
+  final String inFourDaysCondition = "terrible";
+  final String inFiveDaysCondition = "good";
+  final String inSixDaysCondition = "okay";
+
+  final List<String> daysOfWeek = [
+    "MON",
+    "TUE",
+    "WED",
+    "THU",
+    "FRI",
+    "SAT",
+    "SUN"
+  ];
 
   String capitalise(String s) => s[0].toUpperCase() + s.substring(1);
 
   Color getStarGazingConditionColor(String condition) {
     switch (condition.toLowerCase()) {
       case "excellent":
-        return const Color.fromARGB(255, 0, 199, 139);
+        return const Color.fromARGB(255, 64, 224, 208);
       case "good":
         return const Color.fromARGB(255, 52, 199, 54);
       case "okay":
@@ -73,6 +90,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int currentIndex = daysOfWeek.indexOf(currentDay);
+
+    List<String> nextSevenDays = [];
+    for (int i = 0; i < 7; i++) {
+      nextSevenDays.add(daysOfWeek[(currentIndex + i) % 7]);
+    }
+
     return Scaffold(
         body: Container(
             decoration: const BoxDecoration(
@@ -141,16 +165,42 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: const Center(
-                        child: Text(
-                          "Placeholder Weekly Overview",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16.0,
-                          ),
-                        ),
-                      ),
+                      child: Center(
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: List.generate(7, (index) {
+                                Color dayColor;
+
+                                if (index == 0) {
+                                  dayColor = getStarGazingConditionColor(
+                                      stargazingCondition);
+                                } else if (index == 1) {
+                                  dayColor = getStarGazingConditionColor(
+                                      inOneDayCondition);
+                                } else if (index == 2) {
+                                  dayColor = getStarGazingConditionColor(
+                                      inTwoDaysCondition);
+                                } else if (index == 3) {
+                                  dayColor = getStarGazingConditionColor(
+                                      inThreeDaysCondition);
+                                } else if (index == 4) {
+                                  dayColor = getStarGazingConditionColor(
+                                      inFourDaysCondition);
+                                } else if (index == 5) {
+                                  dayColor = getStarGazingConditionColor(
+                                      inFiveDaysCondition);
+                                } else {
+                                  dayColor = getStarGazingConditionColor(
+                                      inSixDaysCondition);
+                                }
+
+                                return Text(nextSevenDays[index],
+                                    style: TextStyle(
+                                      color: dayColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16.0,
+                                    ));
+                              }))),
                     ),
                   ),
                   Padding(
@@ -411,10 +461,10 @@ class HomePage extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          minimumSize: const Size(double.infinity, 75.0),
+                          minimumSize: const Size(double.infinity, 50.0),
                         ),
                         child: const Text(
-                          "Placeholder Hourly Breakdown",
+                          "Hourly Breakdown",
                           style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.bold,
