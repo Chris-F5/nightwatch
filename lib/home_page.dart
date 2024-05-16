@@ -9,7 +9,6 @@ class HomePage extends StatelessWidget {
   HomePage(this.apiData, {super.key});
 
   // Placeholder variables
-  final String currentLocation = "Cambridge, UK";
   final String stargazingCondition = "excellent";
   final double moonPhase = 0.8;
 
@@ -100,6 +99,8 @@ class HomePage extends StatelessWidget {
     for (int i = 0; i < 7; i++) {
       nextSevenDays.add(daysOfWeek[(currentIndex + i) % 7]);
     }
+
+    final String currentLocation = this.apiData['address'];
 
     nextSevenDays[nextSevenDays.indexOf(currentDay)] =
         "|${nextSevenDays[nextSevenDays.indexOf(currentDay)]}|";
