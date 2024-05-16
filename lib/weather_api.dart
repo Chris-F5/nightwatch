@@ -6,7 +6,9 @@ void main() async {
   final weatherApi = WeatherApi();
 
   final weatherData = await weatherApi.getWeather('Cambridge');
-  print(weatherData);
+  print(weatherData['days'].sublist(0,6));
+
+
 }
 
 class WeatherApi {
