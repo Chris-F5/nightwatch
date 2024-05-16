@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'hourly_breakdown_page.dart';
 import 'package:starsview/starsview.dart';
+import 'package:intl/intl.dart';
 import 'weather_api.dart';
 
 // ignore: must_be_immutable
@@ -10,19 +11,7 @@ class HomePage extends StatelessWidget {
 
   // Placeholder variables
   final String stargazingCondition = "excellent";
-  final double moonPhase = 0.8;
 
-  final int currentTemp = 5;
-  final int lowTemp = 7;
-  final int highTemp = 19;
-
-  final String sunrise = "04:22";
-  final String sunset = "21:30";
-
-  final String seeing = "good";
-  final String transparency = "excellent";
-
-  final String currentDay = "THU";
   final String inOneDayCondition = "good";
   final String inTwoDaysCondition = "bad";
   final String inThreeDaysCondition = "good";
@@ -93,6 +82,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DateTime currentDate = DateTime.now();
+    String currentDay = DateFormat('EEEE').format(currentDate);
+    currentDay = currentDay.substring(0, 3).toUpperCase();
+
     int currentIndex = daysOfWeek.indexOf(currentDay);
 
     List<String> nextSevenDays = [];
@@ -100,7 +93,51 @@ class HomePage extends StatelessWidget {
       nextSevenDays.add(daysOfWeek[(currentIndex + i) % 7]);
     }
 
-    final String currentLocation = this.apiData['address'];
+    final String currentLocation = apiData['address'];
+    final double moonPhase = apiData["days"].sublist(0, 6)[0]["moonphase"];
+
+    String sunset = apiData["days"].sublist(0, 6)[0]["sunset"];
+    sunset = sunset.substring(0, sunset.length - 3);
+    String sunrise = apiData["days"].sublist(0, 6)[0]["sunrise"];
+    sunrise = sunrise.substring(0, sunrise.length - 3);
+
+    final int currentTemp = (apiData["days"].sublist(0, 6)[0]["temp"]).round();
+    final int highTemp = (apiData["days"].sublist(0, 6)[0]["tempmax"]).round();
+    final int lowTemp = (apiData["days"].sublist(0, 6)[0]["tempmin"]).round();
+
+    String date = apiData["days"].sublist(0, 6)[0]["datetime"];
+    date = date.substring(date.length - 2, date.length);
+    double seeingNum = int.parse(date) % 3;
+    double transparencyNum = (int.parse(date) % 3) - 1;
+
+    String seeing;
+    if (seeingNum == 0) {
+      seeing = "excellent";
+    } else if (seeingNum == 1) {
+      seeing = "good";
+    } else if (seeingNum == 2) {
+      seeing = "okay";
+    } else if (seeingNum == 3) {
+      seeing = "bad";
+    } else {
+      seeing = "terrible";
+    }
+
+    String transparency;
+    if (transparencyNum == 0) {
+      transparency = "excellent";
+    } else if (transparencyNum == 1) {
+      transparency = "good";
+    } else if (transparencyNum == 2) {
+      transparency = "okay";
+    } else if (transparencyNum == 3) {
+      transparency = "bad";
+    } else {
+      transparency = "terrible";
+    }
+
+    nextSevenDays[nextSevenDays.indexOf(currentDay)] =
+        "|${nextSevenDays[nextSevenDays.indexOf(currentDay)]}|";
 
     return Scaffold(
         body: SafeArea(
@@ -267,7 +304,7 @@ class HomePage extends StatelessWidget {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.white,
-                        offset: Offset(20, -20),
+                        offset: Offset(0, 0),
                         blurRadius: 120.0,
                       ),
                     ],
@@ -290,7 +327,7 @@ class HomePage extends StatelessWidget {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.white,
-                        offset: Offset(0, -20),
+                        offset: Offset(0, 0),
                         blurRadius: 100.0,
                       ),
                     ],
@@ -313,7 +350,7 @@ class HomePage extends StatelessWidget {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.white,
-                        offset: Offset(-20, -20),
+                        offset: Offset(0, 0),
                         blurRadius: 120.0,
                       ),
                     ],
@@ -330,7 +367,7 @@ class HomePage extends StatelessWidget {
               ),
             ])),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 70.0, vertical: 16.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
