@@ -9,16 +9,6 @@ class HomePage extends StatelessWidget {
   late Map<String, dynamic> apiData;
   HomePage(this.apiData, {super.key});
 
-  // Placeholder variables
-  final String stargazingCondition = "excellent";
-
-  final String inOneDayCondition = "good";
-  final String inTwoDaysCondition = "bad";
-  final String inThreeDaysCondition = "good";
-  final String inFourDaysCondition = "terrible";
-  final String inFiveDaysCondition = "good";
-  final String inSixDaysCondition = "okay";
-
   final List<String> daysOfWeek = [
     "MON",
     "TUE",
@@ -107,34 +97,33 @@ class HomePage extends StatelessWidget {
 
     String date = apiData["days"].sublist(0, 6)[0]["datetime"];
     date = date.substring(date.length - 2, date.length);
-    double seeingNum = int.parse(date) % 3;
-    double transparencyNum = (int.parse(date) % 3) - 1;
+    int seeingNum = int.parse(date) % 5;
+    int transparencyNum = ((int.parse(date) - 1) % 5);
 
-    String seeing;
-    if (seeingNum == 0) {
-      seeing = "excellent";
-    } else if (seeingNum == 1) {
-      seeing = "good";
-    } else if (seeingNum == 2) {
-      seeing = "okay";
-    } else if (seeingNum == 3) {
-      seeing = "bad";
-    } else {
-      seeing = "terrible";
+    String numToWord(int n) {
+      if (n == 0) {
+        return "excellent";
+      } else if (n == 1) {
+        return "good";
+      } else if (n == 2) {
+        return "okay";
+      } else if (n == 3) {
+        return "bad";
+      } else {
+        return "terrible";
+      }
     }
 
-    String transparency;
-    if (transparencyNum == 0) {
-      transparency = "excellent";
-    } else if (transparencyNum == 1) {
-      transparency = "good";
-    } else if (transparencyNum == 2) {
-      transparency = "okay";
-    } else if (transparencyNum == 3) {
-      transparency = "bad";
-    } else {
-      transparency = "terrible";
-    }
+    String seeing = numToWord(seeingNum);
+    String transparency = numToWord(transparencyNum);
+    String stargazingCondition = numToWord(transparencyNum);
+
+    String inOneDayCondition = numToWord(((int.parse(date)) % 5));
+    String inTwoDaysCondition = numToWord((int.parse(date) + 1) % 5);
+    String inThreeDaysCondition = numToWord((int.parse(date) + 2) % 5);
+    String inFourDaysCondition = numToWord((int.parse(date) + 3) % 5);
+    String inFiveDaysCondition = numToWord((int.parse(date) + 4) % 5);
+    String inSixDaysCondition = numToWord((int.parse(date) + 5) % 5);
 
     nextSevenDays[nextSevenDays.indexOf(currentDay)] =
         "|${nextSevenDays[nextSevenDays.indexOf(currentDay)]}|";
