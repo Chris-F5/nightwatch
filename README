@@ -10,4 +10,9 @@ BUILD INSTRUCTIONS
   3. Run `dart run flutter_launcher_icons:main` to create icons.
   4. Run `flutter run` to build and run the application.
 
+DEPENDENCIES
+
+This project deends on the flutter framework and flutter packages as listed in
+pubspec.yaml.
+
 [1] https://docs.flutter.dev/get-started/install
